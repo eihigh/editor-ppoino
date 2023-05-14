@@ -1,35 +1,14 @@
 import './index.css';
-import { h, text, patch } from "superfine"
-const v = (t: string, p = {}) => (...c: any[]) => h(t, p, c); // another syntax of h
-const u = (f: { (): void }) => () => { f(); update(); }; // update() after calling f
 
-let n = ["あくたー", "じょぶ", "しすてむ"];
+import { h, patch } from "superfine";
+import { root } from "./root";
 
-function doClick() {
-	n.push(n.length);
-}
+export const v = (t: string, p = {}) => (...c: any[]) => h(t, p, c); // another syntax of h
+export const u = (f: { (): void }) => () => { f(); update(); }; // update() after f
 
-function sidebar() {
-	return v("ul")(
-		...n.map(e =>
-			v("li", { onclick: u(doClick) })(text(e))
-		),
-	);
-}
+export { text } from "superfine";
 
-const title = () =>
-	v("h1")(
-		text("エディタっぽいの"),
-	);
-
-function root() {
-	return [
-		title(),
-		sidebar(),
-	];
-}
-
-function update() {
+export const update = () => {
 	patch(
 		document.getElementById("app"),
 		v("div", { id: "app" })(
