@@ -1,0 +1,20 @@
+{
+  "name": "editor-ppoino",
+  "version": "1.0.0",
+  "description": "エディタっぽいの",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "esbuild src/index.ts --bundle --outdir=dist --servedir=.",
+    "build": "esbuild src/index.ts --bundle --outdir=dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.17.19"
+  },
+  "dependencies": {
+    "superfine": "^8.2.0"
+  }
+}
