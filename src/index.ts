@@ -1,3 +1,4 @@
+import './index.css';
 import { h, text, patch } from "superfine"
 const v = (t: string, p = {}) => (...c: any[]) => h(t, p, c); // another syntax of h
 const u = (f: { (): void }) => () => { f(); update(); }; // update() after calling f
@@ -5,7 +6,7 @@ const u = (f: { (): void }) => () => { f(); update(); }; // update() after calli
 let n = ["あくたー", "じょぶ", "しすてむ"];
 
 function doClick() {
-	// n.push(n.length);
+	n.push(n.length);
 }
 
 function sidebar() {

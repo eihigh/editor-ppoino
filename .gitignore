@@ -1,4 +1,5 @@
-/dist/
+/dist/*
+!/dist/index.html
 
 # Logs
 logs
@@ -91,7 +92,6 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
