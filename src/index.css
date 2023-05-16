@@ -8,15 +8,20 @@ body {
 	padding: 0;
 }
 
-#sidebar {
+nav {
 	width: 10rem;
 	display: flex;
 	flex-direction: column;
+
+	&>div {
+		border: 1px solid skyblue;
+		background-color: azure;
+		border-radius: 4px;
+		padding: 1rem;
+	}
 }
 
-.sidemenu-item {
-	border: 1px solid skyblue;
-	background-color: azure;
-	border-radius: 4px;
+#actor-profile {
+	display: flex;
 	padding: 1rem;
 }

@@ -1,20 +1,33 @@
 import './index.css';
 
 import { h, patch } from "superfine";
-import { root } from "./root";
-
-export const v = (t: string, p = {}) => (...c: any[]) => h(t, p, c); // another syntax of h
-export const u = (f: { (): void }) => () => { f(); update(); }; // update() after f
+import { root } from "./view/root";
 
 export { text } from "superfine";
 
-export const update = () => {
+// Declare types
+type VNode = { tag: string };
+declare function h(t: string, p: { [key: string]: any }, c: VNode[]): VNode;
+declare function text(t: string): VNode; // TODO: this seems not working
+
+// An alternative prettier-able syntax for h
+export const v = (t: string, p = {}) => (...c: VNode[]) => h(t, p, c);
+
+// Render the vdom tree efficiently
+let _willRender = false;
+
+const render = () => {
 	patch(
 		document.getElementById("app"),
-		v("div", { id: "app" })(
-			...root(),
-		),
-	)
+		root(),
+	);
+	_willRender = false;
 }
 
-update();
+export const willRender = () => {
+	if (_willRender) { return; }
+	_willRender = true;
+	requestAnimationFrame(render);
+}
+
+render();
